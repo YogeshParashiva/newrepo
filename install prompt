@@ -1,0 +1,13 @@
+---
+  - hosts: ubuntu
+    become: yes
+    vars_prompt:
+       - name: pkg
+         prompt: enter the package you want to install
+    tasks:
+       - name: install "{{ pkg }}"
+         ansible.builtin.apt:
+               name: "{{ pkg }}"
+               state: present
+               update_cache: yes
+...
